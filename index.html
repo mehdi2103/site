@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nova — Modern One‑Page Website</title>
+  <meta name="description" content="A sleek, responsive one‑page template with dark mode, sections, and smooth scrolling." />
+  <meta property="og:title" content="Nova — Modern One‑Page Website" />
+  <meta property="og:description" content="A sleek, responsive one‑page template with dark mode, sections, and smooth scrolling." />
+  <meta property="og:type" content="website" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --panel: #111317;
+      --text: #E6E9EF;
+      --muted:#aab0bb;
+      --brand:#6EE7B7;
+      --accent:#7C3AED;
+      --ring: #2dd4bf66;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --radius: 16px;
+      --maxw: 1100px;
+    }
+    :root.light{
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --text: #0f172a;
+      --muted:#465164;
+      --brand:#0ea5e9;
+      --accent:#7C3AED;
+      --ring:#0ea5e94d;
+      --shadow: 0 6px 24px rgba(2,6,23,.08);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      background:radial-gradient(1200px 600px at 80% -10%, rgba(124,58,237,.25), transparent),
+                 radial-gradient(900px 500px at -10% 10%, rgba(14,165,233,.20), transparent),
+                 var(--bg);
+      line-height:1.6;
+    }
+    a{color:inherit}
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+    .btn{
+      display:inline-flex; align-items:center; gap:.6rem;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      color:#0b0c10; font-weight:700; border:none; padding:12px 18px; border-radius:12px;
+      box-shadow: var(--shadow);
+      transition:.2s transform ease, .2s box-shadow ease;
+      cursor:pointer; text-decoration:none
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn.secondary{background:transparent; border:1px solid #ffffff30; color:var(--text)}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(150%) blur(10px);
+      background:linear-gradient(to bottom, rgba(10,11,15,.75), transparent)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.3px}
+    .logo{width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg, var(--brand), var(--accent)); box-shadow:var(--shadow)}
+    nav a{opacity:.85; text-decoration:none; padding:8px 12px; border-radius:10px}
+    nav a:hover{background:#ffffff12}
+    .nav-links{display:flex; gap:.2rem}
+    .mobile-toggle{display:none}
+
+    /* Hero */
+    .hero{padding:90px 0 40px}
+    .hero-inner{display:grid; grid-template-columns:1.25fr .75fr; gap:40px; align-items:center}
+    .title{font-size:clamp(34px, 4vw, 56px); line-height:1.05; letter-spacing:-.5px; margin:0 0 14px; font-weight:800}
+    .subtitle{font-size:clamp(16px, 2.2vw, 18px); color:var(--muted); margin:0 0 26px}
+    .hero-card{background:linear-gradient(180deg, #ffffff12, #ffffff08); border:1px solid #ffffff22; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .badge{display:inline-block; background:#ffffff14; border:1px solid #ffffff2b; padding:6px 10px; border-radius:999px; font-size:12px; letter-spacing:.3px; margin-bottom:14px}
+
+    /* Sections */
+    section{padding:70px 0}
+    h2{font-size:clamp(26px, 3vw, 36px); margin:0 0 12px}
+    .section-sub{color:var(--muted); margin:0 0 22px}
+
+    .grid{display:grid; gap:16px}
+    .grid.features{grid-template-columns:repeat(3, 1fr)}
+    .card{background:var(--panel); border:1px solid #ffffff14; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6px}
+    .icon{width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, var(--brand), var(--accent)); display:grid; place-items:center; font-weight:800; color:#0b0c10; box-shadow:var(--shadow)}
+
+    .showcase{display:grid; grid-template-columns: 1fr 1fr; gap:18px}
+    .showcase img{width:100%; border-radius:14px; border:1px solid #ffffff18}
+
+    /* Pricing */
+    .pricing{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px}
+    .price .tag{font-size:12px; opacity:.8}
+    .price .amount{font-size:34px; font-weight:800; margin:6px 0}
+
+    /* FAQ */
+    details{background:var(--panel); border:1px solid #ffffff14; border-radius:var(--radius); padding:14px 18px}
+    details+details{margin-top:10px}
+    summary{cursor:pointer; font-weight:600}
+
+    /* CTA */
+    .cta{display:flex; gap:12px; flex-wrap:wrap}
+
+    /* Footer */
+    footer{padding:60px 0 50px; color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-inner{grid-template-columns:1fr}
+      .grid.features{grid-template-columns:1fr 1fr}
+      .pricing{grid-template-columns:1fr}
+      .showcase{grid-template-columns:1fr}
+    }
+    @media (max-width: 680px){
+      .nav-links{display:none}
+      .mobile-toggle{display:inline-flex; align-items:center; gap:.4rem; background:transparent; border:1px solid #ffffff2a; color:var(--text); border-radius:10px; padding:6px 10px}
+      .grid.features{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand"><span class="logo" aria-hidden="true"></span> Nova</div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button id="mobileBtn" class="mobile-toggle" aria-controls="drawer" aria-expanded="false">Menu</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <span class="badge">✨ New: instant dark mode & smooth scrolling</span>
+          <h1 class="title">Launch a beautiful one‑page site in minutes.</h1>
+          <p class="subtitle">Nova is a clean, accessible template with dark mode, pricing, FAQ, and a ready‑made contact form action. Drop it on Netlify, Vercel, or GitHub Pages.</p>
+          <div class="cta">
+            <a class="btn" href="#pricing">Get Started</a>
+            <a class="btn secondary" href="#features">See Features</a>
+            <button id="themeToggle" class="btn secondary" aria-pressed="false" aria-label="Toggle dark mode">Toggle Theme</button>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img alt="UI preview" src="https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=1600&auto=format&fit=crop" style="width:100%; border-radius:12px; border:1px solid #ffffff1a" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features">
+      <div class="container">
+        <h2>Features built‑in</h2>
+        <p class="section-sub">Everything you need for a polished landing page.</p>
+        <div class="grid features">
+          <div class="card">
+            <div class="icon">A</div>
+            <h3>Accessible</h3>
+            <p>Semantic HTML, keyboard‑friendly controls, and sufficient color contrast.</p>
+          </div>
+          <div class="card">
+            <div class="icon">R</div>
+            <h3>Responsive</h3>
+            <p>Looks great on phones, tablets, and desktops without extra tweaks.</p>
+          </div>
+          <div class="card">
+            <div class="icon">⚡</div>
+            <h3>Fast</h3>
+            <p>Single file, zero build tools, optimized assets, and light JS footprint.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Showcase -->
+    <section id="showcase">
+      <div class="container">
+        <h2>Showcase</h2>
+        <p class="section-sub">Drop screenshots or product images here.</p>
+        <div class="showcase">
+          <img alt="dashboard example" src="https://images.unsplash.com/photo-1551281044-8c1e448ef2b8?q=80&w=1200&auto=format&fit=crop" />
+          <img alt="code example" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+      <div class="container">
+        <h2>Simple pricing</h2>
+        <p class="section-sub">Start free. Upgrade when you grow.</p>
+        <div class="pricing">
+          <article class="card price" aria-label="Starter plan">
+            <div class="tag">Starter</div>
+            <div class="amount">$0</div>
+            <ul>
+              <li>1 project</li>
+              <li>Basic support</li>
+              <li>Community access</li>
+            </ul>
+            <p><a class="btn" href="#contact">Choose Starter</a></p>
+          </article>
+          <article class="card price" aria-label="Pro plan">
+            <div class="tag">Pro</div>
+            <div class="amount">$12<span style="font-size:14px; opacity:.7">/mo</span></div>
+            <ul>
+              <li>Unlimited projects</li>
+              <li>Priority support</li>
+              <li>Team features</li>
+            </ul>
+            <p><a class="btn" href="#contact">Choose Pro</a></p>
+          </article>
+          <article class="card price" aria-label="Enterprise plan">
+            <div class="tag">Enterprise</div>
+            <div class="amount">Let’s talk</div>
+            <ul>
+              <li>Custom SLAs</li>
+              <li>SSO & audit logs</li>
+              <li>Dedicated success</li>
+            </ul>
+            <p><a class="btn" href="#contact">Contact Sales</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <h2>FAQ</h2>
+        <p class="section-sub">Quick answers to common questions.</p>
+        <details>
+          <summary>How do I deploy this?</summary>
+          <div>
+            Export this file as <code>index.html</code> and drop it into Netlify, Vercel, or GitHub Pages. No build step required.
+          </div>
+        </details>
+        <details>
+          <summary>Can I change colors and fonts?</summary>
+          <div>
+            Yes — update the <code>:root</code> CSS variables for brand colors, radius, and shadows.
+          </div>
+        </details>
+        <details>
+          <summary>Is dark mode included?</summary>
+          <div>
+            Yep! It respects system theme and lets visitors toggle themes. Preference is saved in <code>localStorage</code>.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="section-sub">This form posts to a demo endpoint. Replace the action with your own service (e.g., Netlify Forms, Formspree).</p>
+        <form class="card" method="post" action="https://httpbin.org/post" onsubmit="return handleSubmit(event)">
+          <label>
+            <span>Name</span>
+            <input name="name" required placeholder="Jane Doe" />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" required placeholder="jane@example.com" />
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="4" required placeholder="How can we help?"></textarea>
+          </label>
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap">
+            <button class="btn" type="submit">Send message</button>
+            <span id="formStatus" aria-live="polite" style="color:var(--muted)"></span>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <div>© <span id="year"></span> Nova. All rights reserved.</div>
+      <div>
+        <a href="#" aria-label="Twitter">Twitter</a> ·
+        <a href="#" aria-label="GitHub">GitHub</a> ·
+        <a href="#" aria-label="Privacy">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <template id="drawerTemplate">
+    <div id="drawer" style="position:fixed; inset:0; background:rgba(0,0,0,.5); display:none">
+      <nav style="margin-left:auto; width:78%; max-width:360px; height:100%; background:var(--panel); border-left:1px solid #ffffff26; padding:20px">
+        <a href="#features" onclick="closeDrawer()">Features</a><br/>
+        <a href="#showcase" onclick="closeDrawer()">Showcase</a><br/>
+        <a href="#pricing" onclick="closeDrawer()">Pricing</a><br/>
+        <a href="#faq" onclick="closeDrawer()">FAQ</a><br/>
+        <a href="#contact" onclick="closeDrawer()">Contact</a>
+      </nav>
+    </div>
+  </template>
+
+  <script>
+    // Theme preference
+    const root = document.documentElement;
+    const stored = localStorage.getItem('theme');
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    if(!stored){ root.classList.toggle('light', prefersLight); }
+    else { root.classList.toggle('light', stored === 'light'); }
+
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const toLight = !root.classList.contains('light');
+      root.classList.toggle('light', toLight);
+      localStorage.setItem('theme', toLight ? 'light' : 'dark');
+      document.getElementById('themeToggle').setAttribute('aria-pressed', String(toLight));
+    });
+
+    // Mobile drawer
+    const mobileBtn = document.getElementById('mobileBtn');
+    let drawerEl = null;
+    mobileBtn?.addEventListener('click', () => {
+      if(!drawerEl){
+        const tpl = document.getElementById('drawerTemplate');
+        drawerEl = tpl.content.firstElementChild.cloneNode(true);
+        drawerEl.addEventListener('click', e => { if(e.target === drawerEl) closeDrawer(); });
+        document.body.appendChild(drawerEl);
+      }
+      drawerEl.style.display = 'block';
+      mobileBtn.setAttribute('aria-expanded','true');
+    });
+    function closeDrawer(){ drawerEl.style.display = 'none'; mobileBtn.setAttribute('aria-expanded','false'); }
+
+    // Form demo handler
+    async function handleSubmit(e){
+      e.preventDefault();
+      const status = document.getElementById('formStatus');
+      status.textContent = 'Sending…';
+      try{
+        const form = e.target;
+        const fd = new FormData(form);
+        const res = await fetch(form.action, { method:'POST', body: fd });
+        if(res.ok){ status.textContent = 'Thanks! We\'ll be in touch.'; form.reset(); }
+        else { status.textContent = 'Something went wrong. Try again.'; }
+      }catch(err){ status.textContent = 'Network error. Try again.'; }
+      return false;
+    }
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <style>
+    /* Minimal form styling at end for cascade clarity */
+    input, textarea{
+      width:100%; margin-top:6px; padding:12px 14px; border-radius:10px;
+      border:1px solid #ffffff2a; background:#ffffff0e; color:var(--text);
+      outline:none; transition: box-shadow .15s ease, border-color .15s ease;
+    }
+    input:focus, textarea:focus{ box-shadow:0 0 0 6px var(--ring); border-color: transparent; }
+    label{display:block; margin:8px 0}
+    ul{padding-left:18px}
+  </style>
+</body>
+</html>
