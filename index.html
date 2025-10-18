@@ -4,107 +4,159 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Panjulus SRL</title>
-  <meta name="description" content="Panjulus SRL — pisici frumoase și un prim site simpatic." />
+  <meta name="description" content="Panjulus SRL — pisici British Shorthair gri, stil minimalist, rapid." />
   <meta property="og:title" content="Panjulus SRL" />
-  <meta property="og:description" content="Panjulus SRL — pisici frumoase și un prim site simpatic." />
+  <meta property="og:description" content="Panjulus SRL — pisici British Shorthair gri, stil minimalist, rapid." />
   <meta property="og:type" content="website" />
   <meta name="color-scheme" content="light dark" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
+    /* ===== Apple-like minimalist theme ===== */
     :root{
+      /* light (default) */
+      --bg: #ffffff;
+      --panel: #0a0a0a;
+      --text: #111827;
+      --muted:#5b667a;
+      --brand:#111111;
+      --accent:#0a84ff;          /* subtle blue for focus and links */
+      --ring: #0a84ff40;
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 18px;
+      --maxw: 1120px;
+    }
+    :root.light{ /* alias for explicit light */
+      --bg: #ffffff; --text:#111827; --muted:#5b667a; --brand:#111111; --accent:#0a84ff; --ring:#0a84ff40;
+    }
+    :root.dark{
       --bg: #0b0c10;
       --panel: #111317;
       --text: #E6E9EF;
       --muted:#aab0bb;
-      --brand:#6EE7B7;
-      --accent:#7C3AED;
-      --ring: #2dd4bf66;
-      --shadow: 0 10px 30px rgba(0,0,0,.25);
-      --radius: 16px;
-      --maxw: 1100px;
+      --brand:#f5f5f7;
+      --accent:#4aa3ff;
+      --ring:#4aa3ff40;
+      --shadow: 0 20px 50px rgba(0,0,0,.35);
     }
-    :root.light{
-      --bg: #f8fafc;
-      --panel: #ffffff;
-      --text: #0f172a;
-      --muted:#465164;
-      --brand:#0ea5e9;
-      --accent:#7C3AED;
-      --ring:#0ea5e94d;
-      --shadow: 0 6px 24px rgba(2,6,23,.08);
-    }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       color:var(--text);
-      background:radial-gradient(1200px 600px at 80% -10%, rgba(124,58,237,.25), transparent),
-                 radial-gradient(900px 500px at -10% 10%, rgba(14,165,233,.20), transparent),
-                 var(--bg);
+      background:
+        radial-gradient(1000px 400px at 50% -200px, #e5f1ff80, transparent),
+        var(--bg);
       line-height:1.6;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
     }
     a{color:inherit}
     .container{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+
+    /* Buttons */
     .btn{
       display:inline-flex; align-items:center; gap:.6rem;
-      background: linear-gradient(135deg, var(--brand), var(--accent));
-      color:#0b0c10; font-weight:700; border:none; padding:12px 18px; border-radius:12px;
-      box-shadow: var(--shadow);
-      transition:.2s transform ease, .2s box-shadow ease;
+      background:#111; color:#fff; font-weight:700; border:none;
+      padding:12px 18px; border-radius:999px; box-shadow: var(--shadow);
+      transition:.25s transform ease, .25s box-shadow ease, .25s background ease;
       cursor:pointer; text-decoration:none
     }
     .btn:hover{transform:translateY(-2px)}
-    .btn.secondary{background:transparent; border:1px solid #ffffff30; color:var(--text)}
+    .btn.secondary{background:transparent; color:var(--text); border:1px solid #d1d5db}
+    :root.dark .btn.secondary{border-color:#ffffff2a}
 
-    /* Header (centered) */
+    /* ===== Header (centered) ===== */
     header{
-      position:sticky; top:0; z-index:50; backdrop-filter:saturate(150%) blur(10px);
-      background:linear-gradient(to bottom, rgba(10,11,15,.75), transparent)
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(160%) blur(12px);
+      background:linear-gradient(to bottom, rgba(255,255,255,.92), rgba(255,255,255,.6));
+      border-bottom:1px solid #e5e7eb;
+    }
+    :root.dark header{
+      background:linear-gradient(to bottom, rgba(10,11,15,.7), rgba(10,11,15,.25));
+      border-bottom:1px solid #1f242f;
     }
     .nav{
       display:flex; flex-direction:column; align-items:center; justify-content:center;
-      padding:14px 0; gap:8px;
+      padding:14px 0 10px; gap:8px;
     }
-    .brand{display:flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.3px}
-    .logo{width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg, var(--brand), var(--accent)); box-shadow:var(--shadow)}
-    nav a{opacity:.85; text-decoration:none; padding:8px 12px; border-radius:10px}
-    nav a:hover, nav a:focus{background:#ffffff12; outline: 3px solid transparent}
-    nav a:focus-visible{outline:3px solid var(--brand); outline-offset:2px}
-    .nav-links{display:flex; gap:.2rem; flex-wrap:wrap; justify-content:center}
-    .mobile-toggle{display:none}
+    .brand{
+      display:flex; align-items:center; gap:.7rem; font-weight:800; letter-spacing:.2px;
+      font-size:18px;
+    }
+    .logo{
+      width:28px; height:28px; border-radius:8px;
+      background:linear-gradient(135deg, #111, #555);
+      box-shadow:var(--shadow)
+    }
+    .nav-links{
+      display:flex; gap:.2rem; flex-wrap:wrap; justify-content:center;
+    }
+    nav a{
+      text-decoration:none; padding:8px 12px; border-radius:10px; color:#111; opacity:.85;
+    }
+    :root.dark nav a{color:#f5f5f7}
+    nav a:hover, nav a:focus{background:#1111110d}
+    nav a:focus-visible{outline:3px solid var(--accent); outline-offset:2px; border-radius:10px}
 
-    /* Hero */
-    .hero{padding:90px 0 40px}
-    .hero-inner{display:grid; grid-template-columns:1.25fr .75fr; gap:40px; align-items:center}
-    .title{font-size:clamp(34px, 4vw, 56px); line-height:1.05; letter-spacing:-.5px; margin:0 0 14px; font-weight:800; text-align:left}
-    .subtitle{font-size:clamp(16px, 2.2vw, 18px); color:var(--muted); margin:0 0 26px}
-    .hero-card{background:linear-gradient(180deg, #ffffff12, #ffffff08); border:1px solid #ffffff22; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
-    .badge{display:inline-block; background:#ffffff14; border:1px solid #ffffff2b; padding:6px 10px; border-radius:999px; font-size:12px; letter-spacing:.3px; margin-bottom:14px}
+    /* ===== Hero ===== */
+    .hero{padding:84px 0 40px}
+    .hero-inner{display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center}
+    .title{
+      font-size: clamp(38px, 6vw, 64px);
+      line-height:1.05; letter-spacing:-.5px; margin:0 0 14px; font-weight:800;
+    }
+    .subtitle{font-size:clamp(16px, 2.2vw, 20px); color:var(--muted); margin:0 0 26px}
+    .hero-card{
+      background:#fff; border:1px solid #eceff3; border-radius:28px; padding:14px; box-shadow:var(--shadow)
+    }
+    :root.dark .hero-card{background:#121317; border-color:#ffffff22}
+    .badge{
+      display:inline-block; background:#111; color:#fff;
+      padding:6px 12px; border-radius:999px; font-size:12px; letter-spacing:.3px; margin-bottom:14px
+    }
+    :root.dark .badge{background:#f5f5f7; color:#111}
 
-    /* Sections */
-    section{padding:70px 0}
-    h2{font-size:clamp(26px, 3vw, 36px); margin:0 0 12px}
+    .hero-img{
+      width:100%; border-radius:22px; border:1px solid #e5e7eb; display:block;
+      transform:translateZ(0); transition:transform .35s ease;
+    }
+    .hero-img:hover{ transform:scale(1.012) }
+
+    /* ===== Sections ===== */
+    section{padding:72px 0}
+    h2{font-size:clamp(28px, 3.6vw, 40px); margin:0 0 12px}
     .section-sub{color:var(--muted); margin:0 0 22px}
 
     .grid{display:grid; gap:16px}
     .grid.features{grid-template-columns:repeat(3, 1fr)}
-    .card{background:var(--panel); border:1px solid #ffffff14; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .card{
+      background:#f9fafb; border:1px solid #eceff3; border-radius:18px; padding:18px;
+      box-shadow:var(--shadow)
+    }
+    :root.dark .card{background:#111317; border-color:#ffffff1a}
     .card h3{margin:0 0 6px}
-    .icon{width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, var(--brand), var(--accent)); display:grid; place-items:center; font-weight:800; color:#0b0c10; box-shadow:var(--shadow)}
+    .icon{
+      width:40px; height:40px; border-radius:10px; display:grid; place-items:center; font-weight:800;
+      color:#111; background:#f2f3f5; border:1px solid #e5e7eb;
+    }
+    :root.dark .icon{color:#0b0c10; background:#f5f5f7}
 
     .showcase{display:grid; grid-template-columns: 1fr 1fr; gap:18px}
-    .showcase img{width:100%; border-radius:14px; border:1px solid #ffffff18}
+    .showcase img{width:100%; border-radius:18px; border:1px solid #e5e7eb; display:block}
+    :root.dark .showcase img{border-color:#ffffff1a}
 
-    /* "Pricing" → now custom three boxes */
+    /* ===== Three boxes (Panjulus v2) ===== */
     .pricing{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px}
-    .price .tag{font-size:14px; font-weight:700}
-    .price .amount{font-size:18px; opacity:.85; margin:6px 0}
+    .price .tag{font-size:16px; font-weight:700}
+    .price .amount{font-size:18px; opacity:.8; margin:6px 0}
 
     /* FAQ */
-    details{background:var(--panel); border:1px solid #ffffff14; border-radius:var(--radius); padding:14px 18px}
+    details{background:#f9fafb; border:1px solid #eceff3; border-radius:16px; padding:14px 18px}
+    :root.dark details{background:#111317; border-color:#ffffff1a}
     details+details{margin-top:10px}
     summary{cursor:pointer; font-weight:600}
 
@@ -129,6 +181,7 @@
   </style>
 </head>
 <body>
+  <!-- ===== Header ===== -->
   <header>
     <div class="container nav">
       <div class="brand"><span class="logo" aria-hidden="true"></span> Panjulus SRL</div>
@@ -141,13 +194,13 @@
   </header>
 
   <main>
-    <!-- Hero -->
+    <!-- ===== Hero ===== -->
     <section class="hero">
       <div class="container hero-inner">
         <div>
-          <span class="badge">✨ Nou: dark mode & scroll lin</span>
-          <h1 class="title">Panjulus SRL iubește pisicile British Shorthair gri.</h1>
-          <p class="subtitle">Un mic website de prezentare — simplu, rapid și drăguț. Dă click mai jos ca să vezi… multe pisici.</p>
+          <span class="badge">NOU • stil curat, rapid, dark mode</span>
+          <h1 class="title">Iubim British Shorthair gri.</h1>
+          <p class="subtitle">Un site mic, cu grijă pentru detalii. Imagini mari, tipografie clară și o experiență fină.</p>
           <div class="cta">
             <a class="btn" href="#multe-pisici">Vezi pisicile</a>
             <a class="btn secondary" href="#pisici">Despre</a>
@@ -155,13 +208,14 @@
           </div>
         </div>
         <div class="hero-card">
-          <!-- British Shorthair gray cat (random from Unsplash search) -->
-          <img alt="British Shorthair gri - erou" src="https://source.unsplash.com/1600x1000/?british%20shorthair,cat,grey" style="width:100%; border-radius:12px; border:1px solid #ffffff1a" />
+          <!-- Stable image from Wikimedia (CC BY-SA) -->
+          <img class="hero-img" alt="British Shorthair gri — erou"
+               src="https://upload.wikimedia.org/wikipedia/commons/4/41/A_British_Shorthair_grey_cat_with_yellow_eyes.jpg" />
         </div>
       </div>
     </section>
 
-    <!-- Pisici (was Features) -->
+    <!-- ===== Pisici (features) ===== -->
     <section id="pisici">
       <div class="container">
         <h2>Pisici</h2>
@@ -186,19 +240,21 @@
       </div>
     </section>
 
-    <!-- Multe pisici (was Showcase) -->
+    <!-- ===== Multe pisici (gallery) ===== -->
     <section id="multe-pisici">
       <div class="container">
         <h2>Multe pisici</h2>
         <p class="section-sub">Galerie rapidă cu British Shorthair gri.</p>
         <div class="showcase">
-          <img alt="British Shorthair gri - 1" src="https://source.unsplash.com/1200x900/?british%20shorthair,grey%20cat&sig=1" />
-          <img alt="British Shorthair gri - 2" src="https://source.unsplash.com/1200x900/?british%20shorthair,grey%20cat&sig=2" />
+          <img alt="British Shorthair gri — fotografie 1"
+               src="https://upload.wikimedia.org/wikipedia/commons/5/51/BKH-kitten-blue.jpg" />
+          <img alt="British Shorthair gri — fotografie 2"
+               src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Two_British_Shorthair_cats%2C_white_and_blue_%28grey-black%29.jpg" />
         </div>
       </div>
     </section>
 
-    <!-- Panjulus v2 (was Pricing) -->
+    <!-- ===== Panjulus v2 (three custom boxes) ===== -->
     <section id="panjulus-v2">
       <div class="container">
         <h2>Panjulus v2</h2>
@@ -238,7 +294,7 @@
       </div>
     </section>
 
-    <!-- FAQ (ne-am păstrat) -->
+    <!-- ===== FAQ ===== -->
     <section id="faq">
       <div class="container">
         <h2>FAQ</h2>
@@ -249,7 +305,7 @@
         </details>
         <details>
           <summary>Pot schimba culorile?</summary>
-          <div>Da — editează variabilele din <code>:root</code> (de ex. <code>--brand</code> și <code>--accent</code>).</div>
+          <div>Da — editează variabilele din <code>:root</code> (de ex. <code>--accent</code>).</div>
         </details>
         <details>
           <summary>Are dark mode?</summary>
@@ -258,23 +314,17 @@
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- ===== Contact ===== -->
     <section id="contact">
       <div class="container">
         <h2>Contact</h2>
         <p class="section-sub">Formular demo. Vrei să primești emailuri? Îți conectez un serviciu gratuit când spui.</p>
         <form class="card" method="post" action="https://httpbin.org/post" onsubmit="return handleSubmit(event)">
-          <label for="name">
-            <span>Nume</span>
-          </label>
+          <label for="name"><span>Nume</span></label>
           <input id="name" name="name" required placeholder="Jane Doe" />
-          <label for="email">
-            <span>Email</span>
-          </label>
+          <label for="email"><span>Email</span></label>
           <input id="email" type="email" name="email" required placeholder="jane@example.com" />
-          <label for="message">
-            <span>Mesaj</span>
-          </label>
+          <label for="message"><span>Mesaj</span></label>
           <textarea id="message" name="message" rows="4" required placeholder="Cum te putem ajuta?"></textarea>
           <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap">
             <button class="btn" type="submit">Trimite mesaj</button>
@@ -285,66 +335,35 @@
     </section>
   </main>
 
+  <!-- ===== Footer ===== -->
   <footer>
     <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
-      <div>© <span id="year"></span> Panjulus SRL. All rights reserved.</div>
-      <div>
-        <a href="#" aria-label="Twitter">Twitter</a> ·
-        <a href="#" aria-label="GitHub">GitHub</a> ·
-        <a href="#" aria-label="Privacy">Privacy</a>
+      <div>© <span id="year"></span> Panjulus SRL. Toate drepturile rezervate.</div>
+      <div style="font-size:12px">
+        Foto pisici via Wikimedia Commons:
+        <a href="https://commons.wikimedia.org/wiki/File:A_British_Shorthair_grey_cat_with_yellow_eyes.jpg" target="_blank" rel="noopener">G.E. Koronaios</a>,
+        <a href="https://commons.wikimedia.org/wiki/File:BKH-kitten-blue.jpg" target="_blank" rel="noopener">Janinski</a>,
+        <a href="https://commons.wikimedia.org/wiki/File:Two_British_Shorthair_cats,_white_and_blue_(grey-black).jpg" target="_blank" rel="noopener">Liumengyun1221</a>.
       </div>
     </div>
   </footer>
 
-  <template id="drawerTemplate">
-    <div id="drawer" style="position:fixed; inset:0; background:rgba(0,0,0,.5); display:none">
-      <nav style="margin-left:auto; width:78%; max-width:360px; height:100%; background:var(--panel); border-left:1px solid #ffffff26; padding:20px">
-        <a href="#pisici" onclick="closeDrawer()">pisici</a><br/>
-        <a href="#multe-pisici" onclick="closeDrawer()">multe pisici</a><br/>
-        <a href="#panjulus-v2" onclick="closeDrawer()">panjulus v2</a><br/>
-        <a href="#faq" onclick="closeDrawer()">FAQ</a><br/>
-        <a href="#contact" onclick="closeDrawer()">Contact</a>
-      </nav>
-    </div>
-  </template>
-
   <script>
-    // Theme preference
+    // --- Theme preference (light default, dark optional) ---
     const root = document.documentElement;
     const stored = localStorage.getItem('theme');
-    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-    if(!stored){ root.classList.toggle('light', prefersLight); }
-    else { root.classList.toggle('light', stored === 'light'); }
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // default to light (apple-like), unless user/system explicitly prefers dark
+    if(stored === 'dark' || (!stored && prefersDark)){ root.classList.add('dark'); }
+    if(stored === 'light'){ root.classList.remove('dark'); }
 
     document.getElementById('themeToggle').addEventListener('click', () => {
-      const toLight = !root.classList.contains('light');
-      root.classList.toggle('light', toLight);
-      localStorage.setItem('theme', toLight ? 'light' : 'dark');
-      document.getElementById('themeToggle').setAttribute('aria-pressed', String(toLight));
+      const isDark = root.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      document.getElementById('themeToggle').setAttribute('aria-pressed', String(isDark));
     });
 
-    // Mobile drawer (kept if vrei meniu lateral pe mobil)
-    const mobileBtn = document.getElementById('mobileBtn'); // not shown by default
-    let drawerEl = null;
-    function openDrawer(){
-      if(!drawerEl){
-        const tpl = document.getElementById('drawerTemplate');
-        drawerEl = tpl.content.firstElementChild.cloneNode(true);
-        drawerEl.addEventListener('click', e => { if(e.target === drawerEl) closeDrawer(); });
-        document.body.appendChild(drawerEl);
-      }
-      drawerEl.style.display = 'block';
-      document.body.style.overflow = 'hidden';
-      mobileBtn?.setAttribute('aria-expanded','true');
-    }
-    function closeDrawer(){
-      if(!drawerEl) return;
-      drawerEl.style.display = 'none';
-      document.body.style.overflow = '';
-      mobileBtn?.setAttribute('aria-expanded','false');
-    }
-
-    // Form demo handler
+    // --- Form demo handler ---
     async function handleSubmit(e){
       e.preventDefault();
       const status = document.getElementById('formStatus');
@@ -359,17 +378,18 @@
       return false;
     }
 
-    // Year
+    // --- Year ---
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
   <style>
-    /* Minimal form styling at end for cascade clarity */
+    /* Inputs (placed last so it wins the cascade) */
     input, textarea{
-      width:100%; margin-top:6px; padding:12px 14px; border-radius:10px;
-      border:1px solid #ffffff2a; background:#ffffff0e; color:var(--text);
+      width:100%; margin-top:6px; padding:12px 14px; border-radius:12px;
+      border:1px solid #e5e7eb; background:#fff; color:var(--text);
       outline:none; transition: box-shadow .15s ease, border-color .15s ease;
     }
+    :root.dark input, :root.dark textarea{ background:#0f1116; border-color:#2a2f3a; color:var(--text) }
     input:focus, textarea:focus{ box-shadow:0 0 0 6px var(--ring); border-color: transparent; }
     label{display:block; margin:8px 0}
     ul{padding-left:18px}
